@@ -1,2 +1,6 @@
 <h1>Your Answer</h1>
-$results
+#if($isAnagram)
+ <p>$word1 and $word2 are anagrams!</p>
+#else
+ <p>$word1 and $word2 are not anagrams!</p>
+#end 

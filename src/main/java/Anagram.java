@@ -8,6 +8,27 @@ import java.util.Arrays;
 
 public class Anagram {
   public static void main(String[] args) {
+    String layout = "templates/layout.vtl";
+
+    get("/", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/home.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+    get("/results", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/results.vtl");
+
+      String word1 = request.queryParams("word1");
+      String word2 = request.queryParams("word2");
+      Boolean isAnagram = isAnagram(word1, word2);
+
+      model.put("isAnagram", isAnagram);
+      model.put("word1", word1);
+      model.put("word2", word2);
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 
   public static Boolean isAnagram(String word1, String word2) {
