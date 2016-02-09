@@ -10,7 +10,9 @@ public class Anagram {
   public static void main(String[] args) {
   }
 
-  public static Boolean isAnagram(String word1, String word2) {
+  public static Boolean isAnagram(String sentence) {
+    String[] words = sentence.split(" ");
+    ArrayList<String> wordList = new ArrayList<String>(Arrays.asList(array));
     char[] word1Array = word1.toLowerCase().toCharArray();
     char[] word2Array = word2.toLowerCase().toCharArray();
     Arrays.sort(word1Array);
